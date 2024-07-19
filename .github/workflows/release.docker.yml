@@ -10,9 +10,6 @@ env:
 jobs:
   docker:
     runs-on: ubuntu-latest
-    env:
-      PLATFORMS: "linux/amd64,linux/arm64,linux/arm/v7"
-      VERSION: "${{ github.sha }}"
 
     steps:
       - uses: actions/checkout@v4
@@ -37,5 +34,6 @@ jobs:
         with:
           context: .
           push: true
+          platforms: linux/amd64,linux/arm64
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
